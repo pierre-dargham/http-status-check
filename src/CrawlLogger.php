@@ -127,6 +127,10 @@ class CrawlLogger extends CrawlObserver
 
         $message = "{$statusCode} {$reason} - ".(string) $url;
 
+        if ($foundOnUrl) {
+            $message .= " (found on {$foundOnUrl})";
+        }
+
         if ($this->outputFile && $colorTag === 'error') {
             file_put_contents($this->outputFile, $message.PHP_EOL, FILE_APPEND);
         }
